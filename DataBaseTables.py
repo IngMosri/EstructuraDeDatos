@@ -4,18 +4,9 @@ import sqlite3
 conn = sqlite3.connect('cinema.db')
 cursor = conn.cursor()
 
-# Users Table
-cursor.execute(""" CREATE TABLE IF NOT EXISTS
-    user(
-        user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_name TEXT NOT NULL,
-        password TEXT NOT NULL,
-        is_active INTEGER DEFAULT 1 NOT NULL,
-        create_table DATETIME DEFAULT CURRENT_TIMESTAMP,
-        update_table DATETIME DEFAULT CURRENT_TIMESTAMP
-    )""")
 
-# States Table
+
+# Creacion de tabla en la base de datos/ tabla estados
 cursor.execute(""" CREATE TABLE IF NOT EXISTS
     state(
         state_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,7 +17,7 @@ cursor.execute(""" CREATE TABLE IF NOT EXISTS
         update_table DATETIME DEFAULT CURRENT_TIMESTAMP
     )""")
 
-# Cities Table
+# Creacion de tabla en la base de datos/ tabla cuidades 
 cursor.execute(""" CREATE TABLE IF NOT EXISTS
     city(
         city_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,7 +30,8 @@ cursor.execute(""" CREATE TABLE IF NOT EXISTS
         FOREIGN KEY(state_id) REFERENCES state(state_id)
     )""")
 
-# Screen Table / Tabla para las salas del cine
+# Creacion de tabla en la base de datos/ salas del cine
+
 cursor.execute(""" CREATE TABLE IF NOT EXISTS
     screen(
         screen_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -51,8 +43,9 @@ cursor.execute(""" CREATE TABLE IF NOT EXISTS
         FOREIGN KEY(city_id) REFERENCES city(city_id)
     )""")
 
-# Table for relationship between movies and screens. So we can delete a movie from a specific city/screen
-# without deleting it from another city/screen
+#Tabla para la relación entre películas y pantallas. Así que podemos eliminar una película de una ciudad / pantalla específica 
+# sin eliminarlo de otra ciudad / pantalla
+
 cursor.execute(""" CREATE TABLE IF NOT EXISTS
     screen_movie(
         screen_id INTEGER,
@@ -65,7 +58,7 @@ cursor.execute(""" CREATE TABLE IF NOT EXISTS
         FOREIGN KEY(movie_id) REFERENCES movie(movie_id)
     )""")
 
-# Movies Table
+#Creacion de tabla en la base de datos/ tabla peliculas 
 cursor.execute(""" CREATE TABLE IF NOT EXISTS
     movie(
         movie_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -81,7 +74,7 @@ cursor.execute(""" CREATE TABLE IF NOT EXISTS
         FOREIGN KEY(genero_id) REFERENCES genero(genero_id)
     )""")
 
-# generos Table
+#Creacion de tabla en la base de datos/ tabla generos 
 cursor.execute(""" CREATE TABLE IF NOT EXISTS
     genero(
         genero_id INTEGER PRIMARY KEY AUTOINCREMENT,
