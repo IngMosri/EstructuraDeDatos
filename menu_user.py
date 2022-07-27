@@ -1,37 +1,51 @@
-
-
-class Menu_Usuario:
-    
-
+#!/usr/bin/python3
+class Menu_user:
+    def user_main_menu():
         
- 
-        def int_input(prompt):
-                while True:
-                    try:
-                        coordinate = int(input(prompt))
-                        return coordinate
-                    except ValueError as e:
-                        print('El valor debe de ser numerico, por favor intenta ingresar otro valor')
+     
+        correcto=False
+        num=0
+        while(not correcto):
+            try:
+                num = int(input("choose the following option : "))
+                correcto=True
+            except ValueError:
+                print('Error, choose a valid option ')
+         
+        return num
 
-        def main_usuario():
-            
-                correcto = False
-                num = 0
-                while(not correcto):
-                    try:
-                        num = int(input("choose the following option : "))
-                        correcto = True
-                    except ValueError:
-                        print('Error, choose a valid option ')
-                
-                return num
-            
+    def show_menu():
+
         salir = False
         opcion = 0
+        
+        while not salir:
+        
+            print ("1. Buscar peliculas por nombre")
+            print ("2. Buscar peliculas por clasificacion") 
+            print("3 Buscar peliculas por genero")         
+            print ("4. Ordernar cartelera( A Y D) ")
+            print ("5. Consultar cartelera")
+            print ("6. Salir")
             
-        while not salir: 
-            
-            
-            print("****** Bienvenido a Cartelera de cines Doña Pelos *****")
-            print("[1] Menu Administador")
-            print("[2] Menu Usuario")
+            print ("choose one option ")
+        
+            opcion = Menu_user.user_main_menu()
+        
+            if opcion == 1:
+                print ("4. Exit")
+            elif opcion == 2:
+                print ("4. Exit")
+            elif opcion == 3:
+                print ("4. Exit")
+            elif opcion == 4:
+                print ("4. Exit")
+            elif opcion == 5:
+                print ("4. Exit")
+            elif opcion == 6:
+                print ("4. Exit")
+                salir = True
+                
+            else:
+                print ("Choose the option beetween 1 and 3")
+        
